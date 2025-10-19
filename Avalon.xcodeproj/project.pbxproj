@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0FC77C162EA4E0B900AAD20F /* PublicApp in Frameworks */ = {isa = PBXBuildFile; productRef = 0FC77C152EA4E0B900AAD20F /* PublicApp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0FC77BEA2EA4D64600AAD20F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		0FC77BDC2EA4D64500AAD20F /* Avalon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Avalon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC77BE92EA4D64600AAD20F /* AvalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AvalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC77BF32EA4D64600AAD20F /* AvalonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AvalonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FC77C132EA4DB4C00AAD20F /* Feature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Feature; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FC77C162EA4E0B900AAD20F /* PublicApp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +85,8 @@
 				0FC77BEC2EA4D64600AAD20F /* AvalonTests */,
 				0FC77BF62EA4D64600AAD20F /* AvalonUITests */,
 				0FC77BDD2EA4D64500AAD20F /* Products */,
+				0FC77C132EA4DB4C00AAD20F /* Feature */,
+				0FC77C142EA4E0B900AAD20F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +98,13 @@
 				0FC77BF32EA4D64600AAD20F /* AvalonUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0FC77C142EA4E0B900AAD20F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +127,7 @@
 			);
 			name = Avalon;
 			packageProductDependencies = (
+				0FC77C152EA4E0B900AAD20F /* PublicApp */,
 			);
 			productName = Avalon;
 			productReference = 0FC77BDC2EA4D64500AAD20F /* Avalon.app */;
@@ -195,6 +211,8 @@
 			);
 			mainGroup = 0FC77BD32EA4D64500AAD20F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0FC77BDD2EA4D64500AAD20F /* Products */;
 			projectDirPath = "";
@@ -403,8 +421,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,8 +453,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,6 +596,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0FC77C152EA4E0B900AAD20F /* PublicApp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PublicApp;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0FC77BD42EA4D64500AAD20F /* Project object */;
 }
