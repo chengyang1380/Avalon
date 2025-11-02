@@ -37,16 +37,18 @@ public struct RoleSelectionFeature: Reducer {
         case mordred
     }
 
+    private static let defaultRoles: Set<Role> = [
+        .merlin,
+        .percival,
+        .loyalServant,
+        .morgana,
+        .assassin,
+    ]
+
     @ObservableState
     public struct State: Equatable {
         public var roles: [Role] = Role.allCases
-        public var selectedRoles: Set<Role> = [
-            .merlin,
-            .percival,
-            .loyalServant,
-            .morgana,
-            .assassin,
-        ]
+        public var selectedRoles: Set<Role> = RoleSelectionFeature.defaultRoles
 
         public init() {}
     }
@@ -57,6 +59,7 @@ public struct RoleSelectionFeature: Reducer {
         public enum View {
             case selectRole(Role)
             case startButtonTapped
+            case resetButtonTapepd
         }
     }
 
@@ -70,7 +73,7 @@ public struct RoleSelectionFeature: Reducer {
         switch action {
         case .view(.startButtonTapped):
             return .none
-        
+
         case .view(.selectRole(let role)):
             if state.selectedRoles.contains(role) {
                 state.selectedRoles.remove(role)
@@ -78,8 +81,11 @@ public struct RoleSelectionFeature: Reducer {
                 state.selectedRoles.insert(role)
             }
             return .none
+
+        case .view(.resetButtonTapepd):
+            state.selectedRoles = RoleSelectionFeature.defaultRoles
+            return .none
         }
-        return .none
     }
 }
 

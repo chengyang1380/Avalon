@@ -38,6 +38,13 @@ public struct RoleSelectionView: View {
                     .padding()
                 }
             }
+            .toolbar {
+                Button {
+                    send(.resetButtonTapepd)
+                } label: {
+                    Text("重置")
+                }
+            }
             .navigationTitle("現在總共\(store.state.selectedRoles.count)個人")
         }
     }
