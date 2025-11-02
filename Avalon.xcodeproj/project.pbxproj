@@ -41,16 +41,6 @@
 			path = Avalon;
 			sourceTree = "<group>";
 		};
-		0FC77BEC2EA4D64600AAD20F /* AvalonTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AvalonTests;
-			sourceTree = "<group>";
-		};
-		0FC77BF62EA4D64600AAD20F /* AvalonUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AvalonUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +74,6 @@
 			children = (
 				0FAAFA162EB75AED0093FD3E /* Features.xctestplan */,
 				0FC77BDE2EA4D64500AAD20F /* Avalon */,
-				0FC77BEC2EA4D64600AAD20F /* AvalonTests */,
-				0FC77BF62EA4D64600AAD20F /* AvalonUITests */,
 				0FC77BDD2EA4D64500AAD20F /* Products */,
 				0FC77C132EA4DB4C00AAD20F /* Feature */,
 				0FC77C142EA4E0B900AAD20F /* Frameworks */,
@@ -148,9 +136,6 @@
 			dependencies = (
 				0FC77BEB2EA4D64600AAD20F /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				0FC77BEC2EA4D64600AAD20F /* AvalonTests */,
-			);
 			name = AvalonTests;
 			packageProductDependencies = (
 			);
@@ -170,9 +155,6 @@
 			);
 			dependencies = (
 				0FC77BF52EA4D64600AAD20F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				0FC77BF62EA4D64600AAD20F /* AvalonUITests */,
 			);
 			name = AvalonUITests;
 			packageProductDependencies = (
