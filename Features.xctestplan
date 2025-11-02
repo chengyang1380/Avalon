@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "3AD21B5A-0ABE-4D28-909C-DA20D3247BF9",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "FeaturesTests",
+        "name" : "FeaturesTests"
+      }
+    }
+  ],
+  "version" : 1
+}

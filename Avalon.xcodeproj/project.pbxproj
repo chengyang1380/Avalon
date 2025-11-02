@@ -28,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FAAFA162EB75AED0093FD3E /* Features.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Features.xctestplan; sourceTree = "<group>"; };
 		0FC77BDC2EA4D64500AAD20F /* Avalon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Avalon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC77BE92EA4D64600AAD20F /* AvalonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AvalonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC77BF32EA4D64600AAD20F /* AvalonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AvalonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +82,7 @@
 		0FC77BD32EA4D64500AAD20F = {
 			isa = PBXGroup;
 			children = (
+				0FAAFA162EB75AED0093FD3E /* Features.xctestplan */,
 				0FC77BDE2EA4D64500AAD20F /* Avalon */,
 				0FC77BEC2EA4D64600AAD20F /* AvalonTests */,
 				0FC77BF62EA4D64600AAD20F /* AvalonUITests */,
