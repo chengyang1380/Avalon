@@ -9,22 +9,38 @@ import ComposableArchitecture
 import Models
 
 @Reducer
-package struct AppFeature {
+public struct AppFeature {
     @ObservableState
-    package struct State: Equatable {
-        package init() {}
+    public struct State: Equatable {
+        public var home = HomeFeature.State()
+        public var roleReveal = RoleRevealFeature.State()
+
+        public init() {}
     }
 
-    package enum Action: Equatable {
+    public enum Action {
+        case home(HomeFeature.Action)
+        case roleReveal(RoleRevealFeature.Action)
     }
 
-    package init() {}
+    public init() {}
 
-    package var body: some ReducerOf<Self> {
+    public var body: some ReducerOf<Self> {
+        Scope(state: \.home, action: \.home) {
+            HomeFeature()
+        }
+        Scope(state: \.roleReveal, action: \.roleReveal) {
+            RoleRevealFeature()
+        }
         Reduce(core)
     }
 
-    package func core(state: inout State, action: Action) -> Effect<Action> {
-        return .none
+    public func core(state: inout State, action: Action) -> Effect<Action> {
+        switch action {
+        case .home:
+            return .none
+        case .roleReveal:
+            return .none
+        }
     }
 }

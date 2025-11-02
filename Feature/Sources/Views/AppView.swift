@@ -9,21 +9,35 @@ import ComposableArchitecture
 import Features
 import SwiftUI
 
-package struct AppView: View {
-    let store: StoreOf<AppFeature>
+public struct AppView: View {
+    var store: StoreOf<AppFeature>
 
-    package init(store: StoreOf<AppFeature>) {
+    public init(store: StoreOf<AppFeature>) {
         self.store = store
     }
 
-    package var body: some View {
-        Text("Hello, Avalon!")
+    public var body: some View {
+        TabView {
+            HomeView(store: store.scope(state: \.home, action: \.home))
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+            RoleRevealView(
+                store: store.scope(state: \.roleReveal, action: \.roleReveal)
+            )
+            .tabItem {
+                Label("Role Reveal", systemImage: "person.3")
+            }
+
+        }
     }
 }
 
 #Preview {
-    AppView(store: .init(
-        initialState: AppFeature.State(),
-        reducer: { AppFeature() }
-    ))
+    AppView(
+        store: .init(
+            initialState: AppFeature.State(),
+            reducer: { AppFeature() }
+        )
+    )
 }

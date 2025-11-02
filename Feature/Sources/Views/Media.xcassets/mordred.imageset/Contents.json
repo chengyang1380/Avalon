@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "bad_people_mordred.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
