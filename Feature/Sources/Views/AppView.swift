@@ -20,13 +20,13 @@ public struct AppView: View {
         TabView {
             HomeView(store: store.scope(state: \.home, action: \.home))
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("首頁", systemImage: "house")
                 }
-            RoleRevealView(
-                store: store.scope(state: \.roleReveal, action: \.roleReveal)
+            RoleSelectionView(
+                store: store.scope(state: \.roleSelection, action: \.roleSelection)
             )
             .tabItem {
-                Label("Role Reveal", systemImage: "person.3")
+                Label("選擇角色", systemImage: "person.3")
             }
 
         }

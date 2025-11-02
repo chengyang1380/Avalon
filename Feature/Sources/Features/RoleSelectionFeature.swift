@@ -1,5 +1,5 @@
 //
-//  RoleRevealFeature.swift
+//  RoleSelectionFeature.swift
 //  Avalonpublic
 //
 //  Created by ChengYangChen on 10/24/25.
@@ -17,7 +17,7 @@ import ComposableArchitecture
  */
 
 @Reducer
-public struct RoleRevealFeature: Reducer {
+public struct RoleSelectionFeature: Reducer {
     public enum Role: String, Identifiable, Equatable, Sendable, CaseIterable {
         public var id: String { rawValue }
 
@@ -83,7 +83,7 @@ public struct RoleRevealFeature: Reducer {
     }
 }
 
-extension RoleRevealFeature.Role {
+extension RoleSelectionFeature.Role {
     public var name: String {
         switch self {
         case .merlin:

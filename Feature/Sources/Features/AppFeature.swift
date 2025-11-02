@@ -13,14 +13,14 @@ public struct AppFeature {
     @ObservableState
     public struct State: Equatable {
         public var home = HomeFeature.State()
-        public var roleReveal = RoleRevealFeature.State()
+        public var roleSelection = RoleSelectionFeature.State()
 
         public init() {}
     }
 
     public enum Action {
         case home(HomeFeature.Action)
-        case roleReveal(RoleRevealFeature.Action)
+        case roleSelection(RoleSelectionFeature.Action)
     }
 
     public init() {}
@@ -29,8 +29,8 @@ public struct AppFeature {
         Scope(state: \.home, action: \.home) {
             HomeFeature()
         }
-        Scope(state: \.roleReveal, action: \.roleReveal) {
-            RoleRevealFeature()
+        Scope(state: \.roleSelection, action: \.roleSelection) {
+            RoleSelectionFeature()
         }
         Reduce(core)
     }
@@ -39,7 +39,7 @@ public struct AppFeature {
         switch action {
         case .home:
             return .none
-        case .roleReveal:
+        case .roleSelection:
             return .none
         }
     }

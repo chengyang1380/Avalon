@@ -1,5 +1,5 @@
 //
-//  RoleRevealView.swift
+//  RoleSelectionView.swift
 //  Avalonpublic
 //
 //  Created by ChengYangChen on 10/24/25.
@@ -9,11 +9,11 @@ import ComposableArchitecture
 import Features
 import SwiftUI
 
-@ViewAction(for: RoleRevealFeature.self)
-public struct RoleRevealView: View {
-    @Bindable public var store: StoreOf<RoleRevealFeature>
+@ViewAction(for: RoleSelectionFeature.self)
+public struct RoleSelectionView: View {
+    @Bindable public var store: StoreOf<RoleSelectionFeature>
 
-    public init(store: StoreOf<RoleRevealFeature>) {
+    public init(store: StoreOf<RoleSelectionFeature>) {
         self.store = store
     }
 
@@ -44,10 +44,10 @@ public struct RoleRevealView: View {
 }
 
 #Preview {
-    RoleRevealView(
+    RoleSelectionView(
         store: .init(
-            initialState: RoleRevealFeature.State(),
-            reducer: { RoleRevealFeature() }
+            initialState: RoleSelectionFeature.State(),
+            reducer: { RoleSelectionFeature() }
         )
     )
 }
