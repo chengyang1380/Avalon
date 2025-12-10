@@ -2,7 +2,7 @@
 //  HomeFeature.swift
 //  Avalonpublic
 //
-//  Created by ChengYangChen on 10/24/25.
+//  Created by Luan on 10/24/25.
 //
 
 import ComposableArchitecture

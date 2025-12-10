@@ -14,14 +14,25 @@ public struct RoleAssignmentView: View {
     public let store: StoreOf<RoleAssignmentFeature>
 
     public var body: some View {
-        Text("")
+        List(store.roles) { role in
+            Button {
+            } label: {
+                Text(role.name)
+            }
+        }
     }
 }
 
 #Preview {
     RoleAssignmentView(
         store: .init(
-            initialState: RoleAssignmentFeature.State(),
+            initialState: RoleAssignmentFeature.State(roles: [
+                .merlin,
+                .percival,
+                .assassin,
+                .morgana,
+                .loyalServant,
+            ]),
             reducer: {
                 RoleAssignmentFeature()
             }

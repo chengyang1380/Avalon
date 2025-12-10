@@ -8,19 +8,8 @@
 import ComposableArchitecture
 import Models
 
-/*
- 5人    3張    2張
- 6人    4張    2張
- 7人    4張    3張
- 8人    5張    3張
- 9人    6張    3張
- 10人    6張    4張
- */
-
 @Reducer
 public struct RoleSelectionFeature {
-
-
     private static let defaultRoles: Set<Role> = [
         .merlin,
         .percival,
@@ -33,34 +22,54 @@ public struct RoleSelectionFeature {
     public struct State: Equatable {
         public var roles: [Role] = Role.allCases
         public var selectedRoles: Set<Role> = RoleSelectionFeature.defaultRoles
+        public var path = StackState<Path.State>()
+
+        @Presents public var destination: Destination.State?
 
         public init() {}
     }
 
     public enum Action: ViewAction {
         case view(View)
+        case destination(PresentationAction<Destination.Action>)
+        case path(StackAction<Path.State, Path.Action>)
 
         public enum View {
             case selectRole(Role)
             case startButtonTapped
             case resetButtonTapepd
+            case infoButtonTapped
         }
     }
 
     @Reducer(state: .equatable)
     public enum Destination {
-        
+        case rule(GameRuleFeature)
+    }
+
+    @Reducer(state: .equatable)
+    public enum Path {
+        case assignment(RoleAssignmentFeature)
     }
 
     public init() {}
 
     public var body: some ReducerOf<Self> {
         Reduce(core)
+            .ifLet(\.$destination, action: \.destination)
+            .forEach(\.path, action: \.path)
     }
 
     func core(state: inout State, action: Action) -> Effect<Action> {
         switch action {
+        case .destination, .path:
+            return .none
+
         case .view(.startButtonTapped):
+            let roles = IdentifiedArray(uncheckedUniqueElements: state.roles)
+            state.path.append(
+                .assignment(RoleAssignmentFeature.State(roles: roles))
+            )
             return .none
 
         case .view(.selectRole(let role)):
@@ -74,7 +83,10 @@ public struct RoleSelectionFeature {
         case .view(.resetButtonTapepd):
             state.selectedRoles = RoleSelectionFeature.defaultRoles
             return .none
+
+        case .view(.infoButtonTapped):
+            state.destination = .rule(GameRuleFeature.State())
+            return .none
         }
     }
 }
-

@@ -6,13 +6,17 @@
 //
 
 import ComposableArchitecture
+import Models
 
 @Reducer
 public struct RoleAssignmentFeature {
     @ObservableState
     public struct State: Equatable {
+        public var roles: IdentifiedArrayOf<Role>
 
-        public init() {}
+        public init(roles: IdentifiedArrayOf<Role>) {
+            self.roles = roles
+        }
     }
 
     public enum Action: Equatable {
