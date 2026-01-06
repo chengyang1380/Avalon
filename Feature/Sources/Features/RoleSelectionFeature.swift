@@ -37,7 +37,7 @@ public struct RoleSelectionFeature {
         public enum View {
             case selectRole(Role)
             case startButtonTapped
-            case resetButtonTapepd
+            case resetButtonTapped
             case infoButtonTapped
         }
     }
@@ -66,7 +66,7 @@ public struct RoleSelectionFeature {
             return .none
 
         case .view(.startButtonTapped):
-            let roles = IdentifiedArray(uncheckedUniqueElements: state.roles)
+            let roles = IdentifiedArray(uncheckedUniqueElements: state.selectedRoles)
             state.path.append(
                 .assignment(RoleAssignmentFeature.State(roles: roles))
             )
@@ -80,7 +80,7 @@ public struct RoleSelectionFeature {
             }
             return .none
 
-        case .view(.resetButtonTapepd):
+        case .view(.resetButtonTapped):
             state.selectedRoles = RoleSelectionFeature.defaultRoles
             return .none
 

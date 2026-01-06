@@ -45,7 +45,7 @@ struct RoleSelectionFeatureTests {
             ]
         }
 
-        await store.send(.view(.resetButtonTapepd)) {
+        await store.send(.view(.resetButtonTapped)) {
             $0.selectedRoles = [
                 .merlin,
                 .percival,

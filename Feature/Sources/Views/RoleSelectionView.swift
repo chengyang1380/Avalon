@@ -78,7 +78,7 @@ public struct RoleSelectionView: View {
     private var customToolbar: some ToolbarContent {
         ToolbarItemGroup(placement: .topBarLeading) {
             Button("重置") {
-                send(.resetButtonTapepd)
+                send(.resetButtonTapped)
             }
             Button("說明") {
                 send(.infoButtonTapped)
