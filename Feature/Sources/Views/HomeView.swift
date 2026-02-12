@@ -9,6 +9,7 @@ import ComposableArchitecture
 import Features
 import SwiftUI
 
+@ViewAction(for: HomeFeature.self)
 public struct HomeView: View {
     @Bindable public var store: StoreOf<HomeFeature>
 
@@ -17,14 +18,14 @@ public struct HomeView: View {
     }
 
     public var body: some View {
-        NavigationStack {
+        NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
             VStack {
                 Text("五戰三勝，壞人贏三回合就結束了，好人贏三回合後，還要由刺客刺殺梅林後才知道結果！")
                 ForEach(store.gameRounds) { round in
                     WinnerSidePicker(
                         selection: Binding(
                             get: { round.winningSide },
-                            set: { store.send(.winningSidePicked(id: round.id, side: $0)) }
+                            set: { send(.winningSidePicked(id: round.id, side: $0)) }
                         )
                     )
                     .padding()
@@ -34,7 +35,7 @@ public struct HomeView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(
                         action: {
-
+                            send(.voteButtonTapped)
                         },
                         label: {
                             Text("投票")
@@ -42,8 +43,17 @@ public struct HomeView: View {
                     )
                 }
             }
+        } destination: { store in
+            switch store.state {
+            case .vote:
+                if let store = store.scope(
+                    state: \.vote,
+                    action: \.vote
+                ) {
+                    VoteView(store: store)
+                }
+            }
         }
-
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Home")
         .padding()

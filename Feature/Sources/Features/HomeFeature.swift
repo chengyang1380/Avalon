@@ -18,11 +18,23 @@ public struct HomeFeature {
             GameRound(roundNumber: 3),
             GameRound(roundNumber: 4),
         ]
+        public var path = StackState<Path.State>()
     }
 
-    public enum Action: BindableAction {
-        case winningSidePicked(id: GameRound.ID, side: GameRound.Side?)
+    public enum Action: BindableAction, ViewAction {
         case binding(BindingAction<State>)
+        case view(View)
+        case path(StackAction<Path.State, Path.Action>)
+
+        public enum View {
+            case winningSidePicked(id: GameRound.ID, side: GameRound.Side?)
+            case voteButtonTapped
+        }
+    }
+
+    @Reducer(state: .equatable)
+    public enum Path {
+        case vote(VoteFeature)
     }
 
     public init() {}
@@ -50,25 +62,31 @@ public struct HomeFeature {
     public var body: some ReducerOf<Self> {
         BindingReducer()
         Reduce(core)
+            .forEach(\.path, action: \.path)
     }
 
     func core(state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case .winningSidePicked(let id, let side):
+        case .path:
+            return .none
+
+        case .view(.winningSidePicked(let id, let side)):
             state.gameRounds[id].winningSide = side
             return .none
 
         case .binding:
             return .none
 
+        case .view(.voteButtonTapped):
+            state.path.append(.vote(VoteFeature.State()))
+            return .none
         }
     }
 }
 
-// step1: 決定人數及角色
-// step2: 抽角色
-// step3: 選國王 -> 派發任務
-// step4: 所有玩家投票該任務是否可以出
-// step5: 出任務的玩家決定任務是否成功
-// step6: 公布結果
-// step7: 判定遊戲是否結束，若沒結束則回到step3
+extension HomeFeature.GameRound {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        return lhs.id == rhs.id && lhs.roundNumber == rhs.roundNumber
+            && lhs.winningSide == rhs.winningSide
+    }
+}
