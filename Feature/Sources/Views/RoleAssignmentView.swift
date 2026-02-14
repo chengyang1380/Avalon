@@ -9,17 +9,27 @@ import ComposableArchitecture
 import Features
 import SwiftUI
 
+@ViewAction(for: RoleAssignmentFeature.self)
 public struct RoleAssignmentView: View {
 
-    public let store: StoreOf<RoleAssignmentFeature>
+    @Bindable
+    public var store: StoreOf<RoleAssignmentFeature>
 
     public var body: some View {
-        List(store.roles) { role in
+        List(store.roles.indices, id: \.self) { index in
             Button {
+                send(.showRoleTapped(index))
             } label: {
-                Text(role.name)
+                Text("玩家 \(index + 1)")
             }
         }
+        .alert(
+            store: store.scope(
+                state: \.$confirmationDialog,
+                action: \.confirmationDialog
+            )
+        )
+        .alert(store: store.scope(state: \.$roleDialog, action: \.roleDialog))
     }
 }
 
