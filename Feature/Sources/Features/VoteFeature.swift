@@ -47,7 +47,7 @@ public struct VoteFeature {
         }
 
         @CasePathable
-        public enum VoteResultDialog {
+        public enum VoteResultDialog: Equatable {
             case finish
         }
     }
