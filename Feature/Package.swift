@@ -82,7 +82,8 @@ let publicApp = SingleTargetLibrary(
 let package = Package(
     name: appName + "Package",  // To avoid target name collision when importing to Xcode project
     platforms: [
-        .iOS(.v26)
+        .iOS(.v18),
+        .macOS(.v14)
     ],
     products: [
         dependencyClients.product,
