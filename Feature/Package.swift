@@ -101,7 +101,13 @@ let package = Package(
         dependencyClients.target,
         dependencyClientsLive.target,
         features.target,
-        features.testTarget,
+        .testTarget(
+            name: "FeaturesTests",
+            dependencies: [
+                .target(name: "Features"),
+                .target(name: "DependencyClientsLive")
+            ]
+        ),
         models.target,
         publicApp.target,
         views.target,
