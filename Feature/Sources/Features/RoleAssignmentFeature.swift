@@ -43,7 +43,7 @@ public struct RoleAssignmentFeature {
         }
 
         @CasePathable
-        public enum RoleDialog {
+        public enum RoleDialog: Equatable {
             case finish
         }
     }
