@@ -19,6 +19,8 @@ public struct HomeFeature {
             GameRound(roundNumber: 4),
         ]
         public var path = StackState<Path.State>()
+
+        public init() {}
     }
 
     public enum Action: BindableAction, ViewAction {
