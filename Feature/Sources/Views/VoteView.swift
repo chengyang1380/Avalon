@@ -46,13 +46,8 @@ public struct VoteView: View {
 
             showResultButton
         }
-        .alert(
-            store: store.scope(
-                state: \.$confirmationDialog,
-                action: \.confirmationDialog
-            )
-        )
-        .alert(store: store.scope(state: \.$voteResultDialog, action: \.voteResultDialog))
+        .alert($store.scope(state: \.confirmationDialog, action: \.confirmationDialog))
+        .alert($store.scope(state: \.voteResultDialog, action: \.voteResultDialog))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
@@ -92,6 +87,7 @@ struct VoteButton: View {
     }
 }
 
+#if os(iOS)
 #Preview {
     VoteView(
         store: .init(
@@ -100,3 +96,4 @@ struct VoteButton: View {
         )
     )
 }
+#endif

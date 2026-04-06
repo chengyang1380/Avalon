@@ -34,7 +34,7 @@ public struct HomeFeature {
         }
     }
 
-    @Reducer(state: .equatable)
+    @Reducer
     public enum Path {
         case vote(VoteFeature)
     }
@@ -67,7 +67,7 @@ public struct HomeFeature {
             .forEach(\.path, action: \.path)
     }
 
-    func core(state: inout State, action: Action) -> Effect<Action> {
+    func core(state: inout State, action: Action) -> EffectOf<Self> {
         switch action {
         case .path:
             return .none
@@ -92,3 +92,5 @@ extension HomeFeature.GameRound {
             && lhs.winningSide == rhs.winningSide
     }
 }
+
+extension HomeFeature.Path.State: Equatable {}

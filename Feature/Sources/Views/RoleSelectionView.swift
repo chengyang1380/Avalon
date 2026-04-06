@@ -76,6 +76,7 @@ public struct RoleSelectionView: View {
     }
 
     private var customToolbar: some ToolbarContent {
+#if os(iOS)
         ToolbarItemGroup(placement: .topBarLeading) {
             Button("重置") {
                 send(.resetButtonTapped)
@@ -84,9 +85,20 @@ public struct RoleSelectionView: View {
                 send(.infoButtonTapped)
             }
         }
+#else
+        ToolbarItemGroup(placement: .navigation) {
+            Button("重置") {
+                send(.resetButtonTapped)
+            }
+            Button("說明") {
+                send(.infoButtonTapped)
+            }
+        }
+#endif
     }
 }
 
+#if os(iOS)
 #Preview {
     RoleSelectionView(
         store: .init(
@@ -95,3 +107,4 @@ public struct RoleSelectionView: View {
         )
     )
 }
+#endif

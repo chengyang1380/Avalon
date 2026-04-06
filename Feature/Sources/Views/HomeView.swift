@@ -32,6 +32,7 @@ public struct HomeView: View {
                 }
             }
             .toolbar {
+#if os(iOS)
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(
                         action: {
@@ -42,6 +43,18 @@ public struct HomeView: View {
                         }
                     )
                 }
+#else
+                ToolbarItem(placement: .primaryAction) {
+                    Button(
+                        action: {
+                            send(.voteButtonTapped)
+                        },
+                        label: {
+                            Text("投票")
+                        }
+                    )
+                }
+#endif
             }
         } destination: { store in
             switch store.state {
@@ -54,7 +67,9 @@ public struct HomeView: View {
                 }
             }
         }
+#if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+#endif
         .navigationTitle("Home")
         .padding()
     }

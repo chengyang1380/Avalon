@@ -23,16 +23,12 @@ public struct RoleAssignmentView: View {
                 Text("玩家 \(index + 1)")
             }
         }
-        .alert(
-            store: store.scope(
-                state: \.$confirmationDialog,
-                action: \.confirmationDialog
-            )
-        )
-        .alert(store: store.scope(state: \.$roleDialog, action: \.roleDialog))
+        .alert($store.scope(state: \.confirmationDialog, action: \.confirmationDialog))
+        .alert($store.scope(state: \.roleDialog, action: \.roleDialog))
     }
 }
 
+#if os(iOS)
 #Preview {
     RoleAssignmentView(
         store: .init(
@@ -49,3 +45,4 @@ public struct RoleAssignmentView: View {
         )
     )
 }
+#endif

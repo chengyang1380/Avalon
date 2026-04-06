@@ -16,7 +16,9 @@ public struct GameRuleFeature {
         public init() {}
     }
 
-    public enum Action: Equatable {}
+    public enum Action: Equatable {
+        case _dummy
+    }
 
     public init() {}
 
@@ -24,7 +26,7 @@ public struct GameRuleFeature {
         Reduce(core)
     }
 
-    public func core(state: inout State, action: Action) -> Effect<Action> {
+    public func core(state: inout State, action: Action) -> EffectOf<Self> {
         return .none
     }
 }

@@ -35,7 +35,7 @@ public struct AppFeature {
         Reduce(core)
     }
 
-    public func core(state: inout State, action: Action) -> Effect<Action> {
+    public func core(state: inout State, action: Action) -> EffectOf<Self> {
         switch action {
         case .home:
             return .none

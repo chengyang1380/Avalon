@@ -33,6 +33,7 @@ public struct AppView: View {
     }
 }
 
+#if os(iOS)
 #Preview {
     AppView(
         store: .init(
@@ -41,3 +42,4 @@ public struct AppView: View {
         )
     )
 }
+#endif

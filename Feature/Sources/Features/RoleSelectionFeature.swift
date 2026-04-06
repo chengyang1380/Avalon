@@ -42,12 +42,12 @@ public struct RoleSelectionFeature {
         }
     }
 
-    @Reducer(state: .equatable)
+    @Reducer
     public enum Destination {
         case rule(GameRuleFeature)
     }
 
-    @Reducer(state: .equatable)
+    @Reducer
     public enum Path {
         case assignment(RoleAssignmentFeature)
     }
@@ -60,7 +60,7 @@ public struct RoleSelectionFeature {
             .forEach(\.path, action: \.path)
     }
 
-    func core(state: inout State, action: Action) -> Effect<Action> {
+    func core(state: inout State, action: Action) -> EffectOf<Self> {
         switch action {
         case .destination, .path:
             return .none
@@ -90,3 +90,6 @@ public struct RoleSelectionFeature {
         }
     }
 }
+
+extension RoleSelectionFeature.Destination.State: Equatable {}
+extension RoleSelectionFeature.Path.State: Equatable {}

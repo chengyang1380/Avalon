@@ -57,12 +57,17 @@ public struct GameRuleView: View {
                 }
 
             }
+#if os(iOS)
             .listStyle(.insetGrouped)
+#else
+            .listStyle(.inset)
+#endif
             .navigationTitle("遊戲規則")
         }
     }
 }
 
+#if os(iOS)
 #Preview {
     GameRuleView(
         store: .init(
@@ -73,3 +78,4 @@ public struct GameRuleView: View {
         )
     )
 }
+#endif

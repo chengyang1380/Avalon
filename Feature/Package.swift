@@ -11,7 +11,7 @@ let appName = "Avalon"
 let tca = SourceControlDependency(
     package: .package(
         url: "https://github.com/pointfreeco/swift-composable-architecture",
-        exact: "1.23.0"
+        exact: "1.25.5"
     ),
     productName: "ComposableArchitecture"
 )
@@ -56,7 +56,8 @@ let views = SingleTargetLibrary(
         tca.targetDependency,
         models.targetDependency,
         features.targetDependency,
-    ]
+    ],
+    resources: [.process("Media.xcassets")]
 )
 let dependencyClientsLive = SingleTargetLibrary(
     name: "DependencyClientsLive",
@@ -106,7 +107,8 @@ let package = Package(
             dependencies: [
                 .target(name: "Features"),
                 .target(name: "DependencyClientsLive")
-            ]
+            ],
+            path: "Tests/FeatureTests"
         ),
         models.target,
         publicApp.target,
@@ -158,13 +160,14 @@ struct SourceControlDependency {
 struct SingleTargetLibrary {
     var name: String
     var dependencies: [Target.Dependency] = []
+    var resources: [Resource]? = nil
 
     var product: Product {
         .library(name: name, targets: [name])
     }
 
     var target: Target {
-        .target(name: name, dependencies: dependencies)
+        .target(name: name, dependencies: dependencies, resources: resources)
     }
 
     var targetDependency: Target.Dependency {

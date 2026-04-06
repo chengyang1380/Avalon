@@ -58,7 +58,7 @@ public struct RoleAssignmentFeature {
             .ifLet(\.$roleDialog, action: \.roleDialog)
     }
 
-    public func core(state: inout State, action: Action) -> Effect<Action> {
+    public func core(state: inout State, action: Action) -> EffectOf<Self> {
         switch action {
         case .view(.startTask):
             let shuffled = roleShuffler.shuffle(roles: state.roles.elements)
